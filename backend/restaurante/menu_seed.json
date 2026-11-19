@@ -1,0 +1,83 @@
+[
+  {
+    "id": "m1",
+    "cat": "Entradas",
+    "name": "Burrata, Tomate Confit & Pistache",
+    "desc": "Burrata artesanal, tomates confitados no azeite e farofa de pistache torrado",
+    "photo": "assets/burrata.webp",
+    "price": 46,
+    "tempo": 6
+  },
+  {
+    "id": "m2",
+    "cat": "Entradas",
+    "name": "Croquete de Ossobuco (3 un.)",
+    "desc": "Recheio de ossobuco desfiado, maionese de limão siciliano e raspas de parmesão",
+    "photo": "assets/croquete.webp",
+    "price": 38,
+    "tempo": 9
+  },
+  {
+    "id": "m3",
+    "cat": "Massas",
+    "name": "Conchiglioni de Ricota & Manjericão",
+    "desc": "Conchas recheadas de ricota fresca e manjericão sobre pomodoro rústico",
+    "photo": "assets/conchiglioni.jpeg",
+    "price": 68,
+    "tempo": 16
+  },
+  {
+    "id": "m4",
+    "cat": "Massas",
+    "name": "Rondelli de Presunto Cru & Burrata",
+    "desc": "Massa fresca laminada, presunto cru, burrata e molho de tomate assado",
+    "photo": "assets/rondelli.jpeg",
+    "price": 72,
+    "tempo": 18
+  },
+  {
+    "id": "m5",
+    "cat": "Carnes",
+    "name": "Filé ao Risoto de Costela",
+    "desc": "Medalhões de filé grelhados na brasa e risoto de costela desfiada",
+    "photo": "assets/file-risoto.jpeg",
+    "price": 89,
+    "tempo": 22
+  },
+  {
+    "id": "m6",
+    "cat": "Carnes",
+    "name": "Lombo Assado, Legumes de Raiz",
+    "desc": "Lombo selado ao romero com batatas, abobrinha e pimentões assados",
+    "photo": "assets/lombo.jpeg",
+    "price": 78,
+    "tempo": 26
+  },
+  {
+    "id": "m7",
+    "cat": "Sobremesas",
+    "name": "Tiramisù de Café Coado",
+    "desc": "Camadas de savoiardi, mascarpone e café coado na hora, cacau amargo",
+    "photo": "assets/tiramisu.webp",
+    "price": 32,
+    "tempo": 5
+  },
+  {
+    "id": "m8",
+    "cat": "Bebidas",
+    "name": "Negroni Sbagliato",
+    "desc": "Campari, vermute rosso e espumante brut, casca de laranja",
+    "photo": "assets/negroni.webp",
+    "price": 39,
+    "tempo": 4
+  },
+  {
+    "id": "m9",
+    "cat": "Bebidas",
+    "name": "Laranja Prensada",
+    "desc": "Suco de laranja prensado na hora, 400 ml, sem açúcar",
+    "photo": "assets/laranja.webp",
+    "price": 18,
+    "tempo": 3
+  }
+]
