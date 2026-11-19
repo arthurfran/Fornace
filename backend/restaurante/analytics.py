@@ -119,11 +119,7 @@ class AnaliseProducao:
             "dias": days,
             "criterio": "Pedidos entregues, agrupados pela data de entrega.",
             "atualizado_em": refreshed.isoformat() if refreshed else None,
-            "projecao": (
-                "materializada"
-                if connection.vendor == "postgresql"
-                else "consulta em tempo real"
-            ),
+            "projecao": "consulta em tempo real",
             "pedidos": len(orders),
             "unidades": sum(r["quantidade"] for r in current),
             "receita": str(revenue.quantize(Decimal(".01"))),

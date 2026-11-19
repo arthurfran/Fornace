@@ -14,7 +14,7 @@ Prepare o projeto conforme o README e use janelas ou perfis independentes do nav
 | 8:00–9:00 | Entrar como `admin`, cadastrar usuário com os dois perfis e abrir Cadastros Django | Usuário é a conta; garçom e operador são perfis acumuláveis; admin é uma permissão |
 | 9:00–10:00 | Mostrar `models.py`, `forms.py`, `views.py` e o DER | PK/FK separadas, regras compartilhadas e estrutura baseada no projeto de referência |
 
-Para uma demonstração de sete minutos, reduza a visão do código e apresente os cadastros sem criar todos os registros ao vivo. No SQLite, as análises refletem a entrega imediatamente. No PostgreSQL, execute `atualizar_cubo` antes de abrir as análises.
+Para uma demonstração de sete minutos, reduza a visão do código e apresente os cadastros sem criar todos os registros ao vivo. As análises refletem a entrega na próxima consulta tanto no SQLite quanto no PostgreSQL.
 
 ## Conferência manual disponível ao grupo
 
@@ -39,6 +39,6 @@ Para uma demonstração de sete minutos, reduza a visão do código e apresente 
 - Alteração/restauração de disponibilidade e da escala atual.
 - Compilação do frontend JavaScript com Vite.
 
-Essas verificações foram pontuais durante a revisão. O pacote não inclui suíte de testes, Playwright ou dependências de testes. A renderização visual em navegador não foi conferida nesta execução porque o ambiente de revisão não permitiu iniciar o navegador local; o roteiro acima inclui essa conferência para a máquina da apresentação. A configuração opcional do PostgreSQL não foi executada nesta revisão.
+Essas verificações foram pontuais durante a revisão. O projeto não inclui suíte de testes ou dependências de testes. Use o roteiro acima para conferir o layout na máquina da apresentação.
 
 O ZIP não contém banco com dados, credenciais, ambiente virtual, dependências instaladas ou arquivos compilados. `migrate` cria o banco e `seed_demo` prepara a demonstração.

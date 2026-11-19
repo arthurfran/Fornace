@@ -2,7 +2,7 @@
 
 Sistema acadêmico de pedidos, salão, cozinha e acompanhamento da produção. O frontend usa **React com JavaScript e JSX**. O backend usa **Django**, organizado em modelos, formulários, views baseadas em classes, rotas e painel administrativo, seguindo o padrão do [blog-django-crud](https://github.com/arthurfran/blog-django-crud).
 
-O banco local é **SQLite**, relacional e baseado em SQL. PostgreSQL é uma alternativa opcional. A execução usa dois terminais; o projeto não inclui Docker nem suíte de testes automatizados.
+O banco local é **SQLite**. O deploy no Render utiliza **PostgreSQL** e serve o React compilado, a API e o Django Admin no mesmo endereço. A execução local usa dois terminais; o projeto não inclui Docker nem suíte de testes automatizados.
 
 O layout, o cardápio e as imagens do Fornace foram preservados. O modelo de negócio mantém **9 entidades, 57 atributos e 9 relacionamentos**, com PK e FK distintas, perfis acumuláveis e responsável de cozinha por item do pedido.
 
@@ -126,13 +126,11 @@ No Linux/macOS, use `export DATABASE_URL='postgresql://usuario:senha@127.0.0.1:5
 
 Mudar de SQLite para PostgreSQL **não transfere os dados existentes**. Este procedimento configura uma instalação nova. Para retornar ao SQLite, remova a variável `DATABASE_URL` antes de iniciar o backend.
 
-No PostgreSQL, atualize a projeção das análises após a demonstração:
+O painel de análises lê a view SQL `cubo_producao`. Nos dois bancos, pedidos entregues aparecem nas próximas consultas sem um processo de atualização separado.
 
-```bash
-python backend/manage.py atualizar_cubo
-```
+## Publicar no GitHub e no Render
 
-O comando também aceita `--continuo --intervalo 300`, em outro terminal, para atualizar a cada cinco minutos. No SQLite, a projeção é uma view comum e reflete os dados imediatamente, sem esse processo.
+Confira o [guia de publicação](docs/RENDER.md). O `render.yaml` cria um serviço web e um PostgreSQL exclusivos do Fornace. A configuração local continua conforme os passos acima.
 
 ## Documentação e conferência
 
@@ -150,7 +148,7 @@ cd frontend
 npm run build
 ```
 
-Esses comandos verificam configuração, consistência das migrações e compilação. Não exigem uma suíte de testes. `npm run dev` é o modo indicado para a apresentação local; o build isolado em `dist` requer a configuração de um servidor e dos caminhos da API para publicação.
+Esses comandos verificam configuração, consistência das migrações e compilação. `npm run dev` é o modo indicado para a apresentação local; o serviço do Render publica o build e a API juntos.
 
 ## Configurações opcionais
 

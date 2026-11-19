@@ -1,6 +1,7 @@
 """Cadastros no Django Admin; os pedidos são consultados sem alterar o fluxo operacional."""
 
 from django.contrib import admin
+from django.conf import settings
 from django.contrib.auth.models import Group
 from .forms import UsuarioForm, ItemCardapioForm, MesaForm, CategoriaForm
 from .locking import operacao_atomica
@@ -23,7 +24,7 @@ if admin.site.is_registered(Group):
 admin.site.site_header = "Fornace · Administração"
 admin.site.site_title = "Fornace"
 admin.site.index_title = "Cadastros e consultas"
-admin.site.site_url = "http://127.0.0.1:5173/"
+admin.site.site_url = getattr(settings, "FORNACE_URL", "http://127.0.0.1:5173/")
 
 
 class CadastroAdmin(admin.ModelAdmin):

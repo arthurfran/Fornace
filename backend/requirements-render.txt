@@ -1,0 +1,3 @@
+-r requirements-postgres.txt
+gunicorn==24.1.1
+whitenoise==6.12.0

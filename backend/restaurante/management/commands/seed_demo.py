@@ -1,4 +1,4 @@
-"""Carga explícita para desenvolvimento. Nenhuma credencial fixa no código."""
+"""Carga inicial de mesas, cardápio e equipe de demonstração."""
 
 import json
 from getpass import getpass
@@ -19,12 +19,28 @@ from restaurante.locking import operacao_atomica
 class Command(BaseCommand):
     help = "Cria cardápio, mesas e contas demonstrativas; solicita a senha ou lê DEMO_PASSWORD."
 
-    def handle(self, *args, **options):
-        password = os.getenv("DEMO_PASSWORD") or getpass(
-            "Senha das contas de demonstração (8–64 caracteres): "
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "--render",
+            action="store_true",
+            help="Lê ADMIN_PASSWORD e DEMO_PASSWORD, sem solicitar entrada.",
         )
+
+    def handle(self, *args, **options):
+        password = os.getenv("DEMO_PASSWORD", "")
+        if not options["render"] and not password:
+            password = getpass("Senha das contas de demonstração (8–64 caracteres): ")
         if not 8 <= len(password) <= 64:
-            raise CommandError("Informe uma senha com 8 a 64 caracteres.")
+            raise CommandError("Informe DEMO_PASSWORD com 8 a 64 caracteres.")
+        admin_password = (
+            os.getenv("ADMIN_PASSWORD", "") if options["render"] else password
+        )
+        if options["render"] and (
+            not 8 <= len(admin_password) <= 64 or admin_password == password
+        ):
+            raise CommandError(
+                "Defina ADMIN_PASSWORD com 8 a 64 caracteres, diferente de DEMO_PASSWORD."
+            )
         with operacao_atomica():
             for login, nome, admin, waiter, operator in (
                 ("admin", "Administrador", True, False, False),
@@ -38,7 +54,7 @@ class Command(BaseCommand):
                     login=login, defaults={"nome": nome, "administrador": admin}
                 )
                 if created:
-                    user.definir_senha(password)
+                    user.definir_senha(admin_password if admin else password)
                     user.save()
                     if waiter:
                         Garcom.objects.create(

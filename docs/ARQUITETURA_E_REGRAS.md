@@ -75,7 +75,7 @@ Pedidos e linhas confirmados são preservados. O Django Admin permite consultá-
 
 ## Análises e banco SQL
 
-SQLite é a configuração local padrão. `cubo_producao` é uma view comum, consultada com dados atuais. No PostgreSQL, a projeção é uma materialized view, atualizada por `python manage.py atualizar_cubo`; a opção `--continuo --intervalo 300` mantém atualizações periódicas quando o comando está em execução. Não há processo automático iniciado junto ao servidor.
+SQLite é a configuração local padrão; o Render usa PostgreSQL. `cubo_producao` é uma view SQL nos dois bancos e consulta os dados atuais. A migração `0005` substitui a antiga view materializada do PostgreSQL sem alterar os pedidos armazenados.
 
 O painel analisa pedidos entregues pela data de entrega, em períodos de 7, 30 ou 90 dias. Receita e ticket usam pedidos distintos, evitando multiplicação pelo número de linhas. Quantidades somam unidades. Receita inclui serviço. Sem base anterior, a variação fica ausente.
 
